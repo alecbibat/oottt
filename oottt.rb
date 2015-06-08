@@ -108,6 +108,19 @@ class Game
     end
   end
 
+  def play_again?
+    puts 'Play again? (Y/N)'
+    choice = gets.chomp().downcase
+    if choice == 'y'
+      game = Game.new.play
+    elsif choice == 'n'
+      puts 'Bye.'
+      exit
+    else 
+      play_again
+    end
+  end
+
   def play
     @board.draw
     loop do
@@ -122,8 +135,9 @@ class Game
       else
         alternate_player
       end
-      puts "Bye."
+      
     end
+    play_again?
   end
 end
 
